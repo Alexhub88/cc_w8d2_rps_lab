@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 public class RPSActivity extends AppCompatActivity {
 
+    private String rules;
     private TextView rulesTextView;
     private TextView computerChoiceTextView;
     private TextView resultTextView;
@@ -26,23 +27,35 @@ public class RPSActivity extends AppCompatActivity {
         rockButton = findViewById(R.id.rockButtonID);
         paperButton = findViewById(R.id.paperButtonID);
         scissorsButton = findViewById(R.id.scissorsButtonID);
+
+        rules = "Choose one button (Rock, Paper or Scissors) and click on it." +
+                "The Computer will make a random guess of Rock, Paper or Scissors." +
+                "The results will then be compared, and the winner displayed below.";
+        rulesTextView.setText(rules);
+
     }
 
     public void onRockButtonClicked(View button) {
         Computer computer = new Computer();
-        Game game = new Game("rock", computer.computerGuess());
+        String computerGuess = computer.computerGuess();
+        computerChoiceTextView.setText("Computer plays: " + computerGuess);
+        Game game = new Game("rock", computerGuess);
         resultTextView.setText(game.decideWinner());
     }
 
     public void onPaperButtonClicked(View button) {
         Computer computer = new Computer();
-        Game game = new Game("paper", computer.computerGuess());
+        String computerGuess = computer.computerGuess();
+        computerChoiceTextView.setText("Computer plays: " + computerGuess);
+        Game game = new Game("paper", computerGuess);
         resultTextView.setText(game.decideWinner());
     }
 
     public void onScissorsButtonClicked(View button) {
         Computer computer = new Computer();
-        Game game = new Game("scissors", computer.computerGuess());
+        String computerGuess = computer.computerGuess();
+        computerChoiceTextView.setText("Computer plays: " + computerGuess);
+        Game game = new Game("scissors", computerGuess);
         resultTextView.setText(game.decideWinner());
     }
 
